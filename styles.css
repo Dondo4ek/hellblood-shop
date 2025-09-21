@@ -31,3 +31,5 @@ h1{color:#ff2a2a}
 .perk{display:flex;gap:8px;align-items:center;margin:6px 0}
 .perk b{color:#ffd2d2}
 .badge{display:inline-block;padding:2px 8px;border:1px solid #3a1515;border-radius:999px;font-size:12px;color:#ffb3b3;background:#1e0c0c}
+
+.prefix{display:inline-block;margin-top:6px;padding:2px 8px;border-radius:6px;font-weight:800;font-size:13px;letter-spacing:.5px}

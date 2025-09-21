@@ -82,6 +82,16 @@ function openModal(p){
     html += '</div>';
   }
 
+  
+  // HELLBLOOD chat prefix
+  if (p.chat_prefix && p.chat_prefix.text){
+    const pref = p.chat_prefix;
+    html += '<div class="perks">';
+    html += '<h4 class="perks-title">Чат-префикс</h4>';
+    html += '<div class="perk"><span class="prefix" style="background:'+(pref.color||'#333')+';color:#fff">'+pref.text+'</span></div>';
+    html += '</div>';
+  }
+
   descEl.innerHTML = html;
 
   priceEl.textContent = (p.price !== undefined ? p.price : '') + (p.currency ? (' ' + p.currency) : '');
