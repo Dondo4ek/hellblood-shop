@@ -1,3 +1,4 @@
+console.log('[HELLBLOOD] modal pack v6 loaded');
 async function loadProducts(){
   const res = await fetch('products.json');
   const items = await res.json();
