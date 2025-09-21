@@ -4,7 +4,7 @@
     "title": "Набор Lord",
     "price": 5,
     "currency": "RUB",
-    "description": "Бюджетный вход: стартовые ресурсы + оружие.",
+    "description": "Томпсон, патроны, лёгкая броня и хил. Быстрый старт в бой.",
     "image": "kit-lord.png",
     "paymentLink": "#"
   },
@@ -13,7 +13,7 @@
     "title": "Набор Daemon Prince",
     "price": 10,
     "currency": "RUB",
-    "description": "Баланс силы: усиленное оружие, броня, боеприпасы.",
+    "description": "АК + берданка, патроны, металл-броня, хил, немного взрывчатки.",
     "image": "kit-daemon-prince.png",
     "paymentLink": "#"
   },
@@ -22,7 +22,7 @@
     "title": "Набор Khorne",
     "price": 20,
     "currency": "RUB",
-    "description": "Кровавая ярость: максимальный арсенал и припасы.",
+    "description": "2 АК с обвесами, болтовка, фулл металл-сет, хил, C4, ракеты и турель.",
     "image": "kit-khorne.png",
     "paymentLink": "#"
   }
