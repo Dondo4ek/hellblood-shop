@@ -99,12 +99,20 @@ function openModal(p){
 
   modal.classList.add('show');
   modal.setAttribute('aria-hidden', 'false');
+  const bodyEl = modal.querySelector('.modal-body');
+  updateScrollShadows(bodyEl);
+  bodyEl.addEventListener('scroll', ()=> updateScrollShadows(bodyEl));
+  const buyEl2 = modal.querySelector('#modal-buy');
+  if (buyEl2) buyEl2.focus();
+  window.__hb_untrap && window.__hb_untrap();
+  window.__hb_untrap = trapFocus(modal.querySelector('.modal-dialog'));
 }
 
 function closeModal(){
   const modal = document.getElementById('product-modal');
   modal.classList.remove('show');
   modal.setAttribute('aria-hidden', 'true');
+  if (window.__hb_untrap){ window.__hb_untrap(); window.__hb_untrap = null; }
 }
 
 // Delegate close actions
@@ -127,3 +135,30 @@ document.addEventListener('keydown', (e)=>{
 });
 
 document.addEventListener('DOMContentLoaded', loadProducts);
+
+
+/* ===== HELLBLOOD E: UX Core (focus trap, scroll shadows, Enter-to-buy) ===== */
+function updateScrollShadows(bodyEl){
+  const atTop = bodyEl.scrollTop <= 1;
+  const atBottom = bodyEl.scrollHeight - bodyEl.scrollTop - bodyEl.clientHeight <= 1;
+  bodyEl.classList.toggle('scrolled-top', atTop);
+  bodyEl.classList.toggle('scrolled-bottom', atBottom);
+}
+
+function trapFocus(container){
+  const focusable = container.querySelectorAll('a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])');
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  function onKey(e){
+    if(e.key === 'Tab'){
+      if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
+    if(e.key === 'Enter'){
+      const buy = container.querySelector('#modal-buy');
+      if (buy) buy.click();
+    }
+  }
+  container.addEventListener('keydown', onKey);
+  return ()=> container.removeEventListener('keydown', onKey);
+}
