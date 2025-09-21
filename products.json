@@ -2,28 +2,28 @@
   {
     "id": "vip_berserk_30",
     "title": "VIP Берсерк — 30 дней",
-    "price": 15,
+    "price": 349,
     "currency": "RUB",
-    "description": "VIP-слоты, /skin, /craft, +дом слотов.",
-    "image": "assets/vip-berserk.png",
+    "description": "Доступ к VIP-слотам, /skin, /craft, +дом слотов.",
+    "image": "assets/vip.png",
     "paymentLink": "https://example.com/pay/vip_berserk_30"
   },
   {
     "id": "kit_raider",
     "title": "Набор Рейдера",
-    "price": 7,
+    "price": 199,
     "currency": "RUB",
-    "description": "АК + 180 патронов, сет брони, 10 хилок.",
-    "image": "assets/kit-raider.png",
+    "description": "АК + 180 патронов, сет брони, хилки.",
+    "image": "assets/kit.png",
     "paymentLink": "https://example.com/pay/kit_raider"
   },
   {
     "id": "resources_starter",
     "title": "Ресурсы Старта",
-    "price": 5,
+    "price": 99,
     "currency": "RUB",
-    "description": "Дерево, камень, металл, сера — быстрый буст.",
-    "image": "assets/resources-starter.png",
+    "description": "Металл, серо, дерево — для быстрого старта.",
+    "image": "assets/resources.png",
     "paymentLink": "https://example.com/pay/resources_starter"
   }
 ]
