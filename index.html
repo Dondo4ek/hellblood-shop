@@ -18,43 +18,89 @@
     .row{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
     .price{font-weight:800}
     .btn{display:inline-block;text-decoration:none;background:var(--accent);color:#fff;padding:10px 14px;border-radius:12px;font-weight:800}
+
+    /* ===== Contained banner header ===== */
+    header{border-bottom:2px solid #ff2a2a;background:linear-gradient(90deg,#1a0000,#0b0b0b)}
+    .header-inner{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-badge{background:#ff2a2a;color:#fff;font-weight:900;font-size:24px;padding:6px 14px;border-radius:12px;box-shadow:0 0 15px rgba(255,0,0,.6)}
+    .brand-text{display:flex;flex-direction:column;line-height:1}
+    .brand-text .t1{font-size:20px;font-weight:800;color:#fff}
+    .brand-text .t2{font-size:12px;color:#bbb}
+    nav.nav{display:flex;gap:12px;flex-wrap:wrap;font-weight:600}
+    nav.nav a{color:#fff;text-decoration:none}
+
+    /* Banner box clipped to container with rounded corners */
+    .banner-wrap{max-width:1100px;margin:12px auto 18px auto;padding:0 20px}
+    .banner-box{border-radius:18px;overflow:hidden;position:relative;border:1px solid #1f1f1f}
+    .banner-bg{background:url('hellblood-banner.png') center/cover no-repeat; width:100%; aspect-ratio: 21/9;}
+    /* Fallback if aspect-ratio not supported */
+    .banner-bg::before{content:'';display:block;padding-top:42.857%} /* 21:9 */
+    .banner-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.55))}
+    .banner-content{position:absolute;left:24px;bottom:20px;right:24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .badge{background:rgba(0,0,0,.6);padding:8px 12px;border-radius:12px;color:#fff;display:flex;align-items:center;gap:10px}
+    .badge .hb{background:#ff2a2a;color:#fff;font-weight:900;font-size:20px;padding:4px 10px;border-radius:10px;box-shadow:0 0 12px rgba(255,0,0,.6)}
+    .badge .title{display:flex;flex-direction:column;line-height:1}
+    .badge .title .a{font-size:18px;font-weight:800}
+    .badge .title .b{font-size:12px;color:#d0d0d0}
+    .banner-nav{background:rgba(0,0,0,.6);padding:8px 12px;border-radius:12px;display:flex;gap:12px;flex-wrap:wrap;font-weight:600}
+    .banner-nav a{color:#fff;text-decoration:none}
+
+    @media (max-width:700px){
+      .banner-content{flex-direction:column;align-items:flex-start;gap:10px}
+    }
   </style>
 </head>
 <body>
-  <!-- Шапка с фоном -->
-  <header class="header" style="background:url('hellblood-banner.png') center/cover no-repeat; padding:40px 20px; border-bottom:2px solid #ff2a2a; display:flex; align-items:center; justify-content:space-between;">
-    <div style="background:rgba(0,0,0,0.6); padding:10px 16px; border-radius:12px; display:flex; align-items:center; gap:12px;">
-      <div style="background:#ff2a2a;color:#fff;font-weight:900;font-size:24px;padding:6px 14px;border-radius:12px;box-shadow:0 0 15px rgba(255,0,0,.6);">
-        HB
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-badge">HB</div>
+        <div class="brand-text">
+          <span class="t1">HELLBLOOD RUST</span>
+          <span class="t2">убей или сдохни</span>
+        </div>
       </div>
-      <div style="display:flex;flex-direction:column;line-height:1;">
-        <span style="font-size:22px;font-weight:800;color:#fff;">HELLBLOOD RUST</span>
-        <span style="font-size:13px;color:#bbb;">убей или сдохни</span>
-      </div>
+      <nav class="nav">
+        <a href="#shop">Магазин</a>
+        <a href="#how">Как работает</a>
+        <a href="#rules">Правила</a>
+        <a href="#refunds">Возвраты</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
     </div>
-    <nav class="nav" style="background:rgba(0,0,0,0.6); padding:8px 12px; border-radius:12px; display:flex; gap:12px; flex-wrap:wrap; font-weight:600;">
-      <a href="#shop" style="color:#fff;text-decoration:none;">Магазин</a>
-      <a href="#how" style="color:#fff;text-decoration:none;">Как работает</a>
-      <a href="#rules" style="color:#fff;text-decoration:none;">Правила</a>
-      <a href="#refunds" style="color:#fff;text-decoration:none;">Возвраты</a>
-      <a href="#faq" style="color:#fff;text-decoration:none;">FAQ</a>
-      <a href="#contacts" style="color:#fff;text-decoration:none;">Контакты</a>
-    </nav>
   </header>
 
-  <div class="container">
-    <!-- Герой + оглавление -->
-    <section class="hero" id="toc" style="border:1px solid #1f1f1f;border-radius:18px;background:linear-gradient(180deg,#141414,#0e0e0e);padding:20px;margin:12px 0 18px 0">
-      <h1 style="margin:0 0 6px 0;">HELLBLOOD RUST — убей или сдохни</h1>
-      <p style="margin:0 0 10px 0;color:#bdbdbd">Официальный магазин. Быстрая выдача. Берсерк-стиль.</p>
-      <div class="small" style="color:#8a8a8a">IP: <code>client.connect your.ip.or.domain:28015</code> • Discord: <b>discord.gg/hellblood</b></div>
-    </section>
+  <!-- CONTAINED BANNER -->
+  <div class="banner-wrap">
+    <div class="banner-box">
+      <div class="banner-bg"></div>
+      <div class="banner-overlay"></div>
+      <div class="banner-content">
+        <div class="badge">
+          <div class="hb">HB</div>
+          <div class="title">
+            <span class="a">HELLBLOOD RUST</span>
+            <span class="b">Официальный магазин • Быстрая выдача</span>
+          </div>
+        </div>
+        <div class="banner-nav">
+          <a href="#shop">Магазин</a>
+          <a href="#how">Как работает</a>
+          <a href="#rules">Правила</a>
+          <a href="#refunds">Возвраты</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contacts">Контакты</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Магазин -->
+  <div class="container">
     <h2 id="shop">Магазин</h2>
     <div id="grid" class="grid"></div>
 
-    <!-- Разделы -->
     <section id="how" style="margin-top:28px">
       <h2>Как это работает</h2>
       <ol>
