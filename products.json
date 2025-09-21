@@ -2,46 +2,28 @@
   {
     "id": "vip_berserk_30",
     "title": "VIP Берсерк — 30 дней",
-    "price": 15,
+    "price": 349,
     "currency": "RUB",
-    "description": "VIP-слоты, /skin, /craft, +дом слотов.",
-    "image": "assets/vip-berserk.png",
+    "description": "Доступ к VIP-слотам, /skin, /craft, +дом слотов.",
+    "image": "assets/vip.png",
     "paymentLink": "https://example.com/pay/vip_berserk_30"
   },
   {
     "id": "kit_raider",
     "title": "Набор Рейдера",
-    "price": 7,
+    "price": 199,
     "currency": "RUB",
-    "description": "АК + 180 патронов, сет брони, 10 хилок.",
-    "image": "assets/kit-raider.png",
+    "description": "АК + 180 патронов, сет брони, хилки.",
+    "image": "assets/kit.png",
     "paymentLink": "https://example.com/pay/kit_raider"
   },
   {
-    "id": "kit_builder",
-    "title": "Набор Строителя",
-    "price": 6,
+    "id": "resources_starter",
+    "title": "Ресурсы Старта",
+    "price": 99,
     "currency": "RUB",
-    "description": "Строительные инструменты, дерево/камень/металл.",
-    "image": "assets/kit-builder.png",
-    "paymentLink": "https://example.com/pay/kit_builder"
-  },
-  {
-    "id": "kit_medic",
-    "title": "Набор Медика",
-    "price": 5,
-    "currency": "RUB",
-    "description": "Аптечки, шприцы, бинты, еда.",
-    "image": "assets/kit-medic.png",
-    "paymentLink": "https://example.com/pay/kit_medic"
-  },
-  {
-    "id": "kit_sniper",
-    "title": "Набор Снайпера",
-    "price": 8,
-    "currency": "RUB",
-    "description": "Болтовка, прицел, 60 патронов, глушитель.",
-    "image": "assets/kit-sniper.png",
-    "paymentLink": "https://example.com/pay/kit_sniper"
+    "description": "Металл, серо, дерево — для быстрого старта.",
+    "image": "assets/resources.png",
+    "paymentLink": "https://example.com/pay/resources_starter"
   }
 ]
