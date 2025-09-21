@@ -68,6 +68,20 @@ function openModal(p){
   } else {
     html += '<p>' + (p.description || '') + '</p>';
   }
+  
+  // HELLBLOOD perks (sethome / tp) rendering
+  if (typeof p.sethome_count === 'number' || (typeof p.tp_cooldown_sec === 'number' && typeof p.tp_time_sec === 'number')){
+    html += '<div class="perks">';
+    html += '<h4 class="perks-title">Привилегии HELLBLOOD</h4>';
+    if (typeof p.sethome_count === 'number'){
+      html += '<div class="perk"><span class="badge">/sethome</span><div><b>/sethome</b>: ' + p.sethome_count + ' слота</div></div>';
+    }
+    if (typeof p.tp_cooldown_sec === 'number' && typeof p.tp_time_sec === 'number'){
+      html += '<div class="perk"><span class="badge">/tp</span><div><b>/tp</b>: перезарядка ' + p.tp_cooldown_sec + ' сек • время ' + p.tp_time_sec + ' сек</div></div>';
+    }
+    html += '</div>';
+  }
+
   descEl.innerHTML = html;
 
   priceEl.textContent = (p.price !== undefined ? p.price : '') + (p.currency ? (' ' + p.currency) : '');

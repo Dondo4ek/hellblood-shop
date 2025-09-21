@@ -24,3 +24,10 @@ h1{color:#ff2a2a}
 .modal-body img{width:100%;height:auto;display:block;background:#121212;border-radius:8px;margin-bottom:10px}
 
 .actions{display:flex;gap:8px;margin-top:10px;align-items:center}
+
+/* === HELLBLOOD perks block === */
+.perks{margin-top:12px;padding:12px;border:1px solid #2a0f0f;border-radius:12px;background:linear-gradient(180deg,#1a0d0d,#120808)}
+.perks-title{margin:0 0 8px 0;color:var(--accent);font-weight:800;letter-spacing:.5px;text-transform:uppercase}
+.perk{display:flex;gap:8px;align-items:center;margin:6px 0}
+.perk b{color:#ffd2d2}
+.badge{display:inline-block;padding:2px 8px;border:1px solid #3a1515;border-radius:999px;font-size:12px;color:#ffb3b3;background:#1e0c0c}
