@@ -24,7 +24,11 @@
     ],
     "sethome_count": 4,
     "tp_cooldown_sec": 180,
-    "tp_time_sec": 15
+    "tp_time_sec": 15,
+    "chat_prefix": {
+      "text": "[LORD]",
+      "color": "#8ecfff"
+    }
   },
   {
     "id": "kit_daemon_prince",
@@ -51,7 +55,11 @@
     ],
     "sethome_count": 6,
     "tp_cooldown_sec": 120,
-    "tp_time_sec": 10
+    "tp_time_sec": 10,
+    "chat_prefix": {
+      "text": "[DAEMON PRINCE]",
+      "color": "#ff66ff"
+    }
   },
   {
     "id": "kit_khorne",
@@ -79,6 +87,10 @@
     ],
     "sethome_count": 7,
     "tp_cooldown_sec": 60,
-    "tp_time_sec": 5
+    "tp_time_sec": 5,
+    "chat_prefix": {
+      "text": "[KHORNE]",
+      "color": "#ff2a2a"
+    }
   }
 ]
