@@ -13,7 +13,6 @@ async function loadProducts(){
     const img = document.createElement('img'); img.src = p.image; img.alt = p.title;
     const content = document.createElement('div'); content.className = 'content';
     const h = document.createElement('h3'); h.textContent = p.title;
-    // убрали краткое описание на карточке — только заголовок + цена/кнопка
     const row = document.createElement('div'); row.className = 'row';
     const price = document.createElement('div'); price.className='price'; price.textContent = `${p.price} ${p.currency}`;
     const btn = document.createElement('a'); btn.className='btn'; btn.textContent='Купить'; btn.href=p.paymentLink || '#'; btn.target='_blank';
@@ -38,7 +37,6 @@ const modalBuy = document.getElementById('modalBuy');
 const modalClose = document.querySelector('.close');
 const steamInput = document.getElementById('steamInput');
 const testMode = document.getElementById('testMode');
-
 let currentProduct = null;
 
 function openModal(p){
@@ -47,7 +45,6 @@ function openModal(p){
   modalImage.src = p.image;
   modalImage.alt = p.title;
   modalLong.textContent = p.longDescription || p.description || '';
-  // items
   modalItems.innerHTML = '';
   if(Array.isArray(p.items) && p.items.length){
     for(const it of p.items){
@@ -61,27 +58,26 @@ function openModal(p){
   } else {
     document.getElementById('itemsWrap').style.display = 'none';
   }
-
   modalPrice.textContent = `${p.price} ${p.currency}`;
   modalBuy.href = p.paymentLink || '#';
   modal.classList.add('show');
   modal.setAttribute('aria-hidden','false');
-  document.body.classList.add('modal-open');
+  document.body.style.overflow = 'hidden';
   steamInput.focus();
 }
 
 function closeModal(){
   modal.classList.remove('show');
   modal.setAttribute('aria-hidden','true');
-  document.body.classList.remove('modal-open');
+  document.body.style.overflow = '';
   currentProduct = null;
 }
 
-document.querySelector('.close').addEventListener('click', closeModal);
+modalClose.addEventListener('click', closeModal);
 modal.addEventListener('click', (e)=>{ if(e.target === modal){ closeModal(); }});
 document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ closeModal(); }});
 
-// Link building with {steamid}
+// Build link with {steamid} and optional tm=1
 modalBuy.addEventListener('click', (e)=>{
   if(!currentProduct) return;
   const base = currentProduct.paymentLink || '#';
