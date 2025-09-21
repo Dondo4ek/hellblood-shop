@@ -7,8 +7,7 @@ async function loadProducts(){
   for(const p of items){
     const card = document.createElement('div');
     card.className = 'card';
-    const imgPath = p.image && p.image.length ? p.image : 'assets/vip.svg';
-    const img = document.createElement('img'); img.src = imgPath.replace('.png','.svg');
+    const img = document.createElement('img'); img.src = p.image || 'assets/vip-berserk.png';
     const content = document.createElement('div'); content.className = 'content';
     const h = document.createElement('h3'); h.textContent = p.title;
     const d = document.createElement('div'); d.className = 'desc'; d.textContent = p.description;
