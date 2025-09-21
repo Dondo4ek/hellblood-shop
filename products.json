@@ -5,25 +5,7 @@
     "price": 15,
     "currency": "RUB",
     "description": "Доступ к VIP-слотам, /skin, /craft, +дом слотов.",
-    "image": ,
+    "image": "https://pic.maxiol.com/images2/1758479280.1837079940.chatgptimage212025.png",
     "paymentLink": "https://example.com/pay/vip_berserk_30"
-  },
-  {
-    "id": "kit_raider",
-    "title": "Набор Рейдера",
-    "price": 199,
-    "currency": "RUB",
-    "description": "АК + 180 патронов, сет брони, хилки.",
-    "image": "assets/kit.png",
-    "paymentLink": "https://example.com/pay/kit_raider"
-  },
-  {
-    "id": "resources_starter",
-    "title": "Ресурсы Старта",
-    "price": 99,
-    "currency": "RUB",
-    "description": "Металл, серо, дерево — для быстрого старта.",
-    "image": "assets/resources.png",
-    "paymentLink": "https://example.com/pay/resources_starter"
   }
 ]
