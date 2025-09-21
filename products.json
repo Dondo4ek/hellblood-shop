@@ -4,26 +4,132 @@
     "title": "Набор Lord",
     "price": 5,
     "currency": "RUB",
-    "description": "Томпсон, патроны, лёгкая броня и хил. Быстрый старт в бой.",
     "image": "kit-lord.png",
-    "paymentLink": "#"
+    "longDescription": "Дешёвый старт для x3 сервера: мобильный сетап для ближних и средних дистанций.",
+    "items": [
+      {
+        "name": "Томпсон",
+        "qty": 1
+      },
+      {
+        "name": "Патроны 9×19",
+        "qty": 150
+      },
+      {
+        "name": "Дорожный нагрудник",
+        "qty": 1
+      },
+      {
+        "name": "Шлем",
+        "qty": 1
+      },
+      {
+        "name": "Аптечка большая",
+        "qty": 2
+      },
+      {
+        "name": "Шприц",
+        "qty": 8
+      }
+    ],
+    "paymentLink": "https://enot.io/pay?m=YOUR_SHOP_ID&oa=5&o={steamid}"
   },
   {
     "id": "kit_daemon_prince",
     "title": "Набор Daemon Prince",
     "price": 10,
     "currency": "RUB",
-    "description": "АК + берданка, патроны, металл-броня, хил, немного взрывчатки.",
     "image": "kit-daemon-prince.png",
-    "paymentLink": "#"
+    "longDescription": "Баланс PvP/мини-рейда: хватает на доминацию и пробный рейд.",
+    "items": [
+      {
+        "name": "АК-47",
+        "qty": 1
+      },
+      {
+        "name": "Берданка",
+        "qty": 1
+      },
+      {
+        "name": "Патроны 5.56",
+        "qty": 300
+      },
+      {
+        "name": "Металл-нагрудник",
+        "qty": 1
+      },
+      {
+        "name": "Металл-шлем",
+        "qty": 1
+      },
+      {
+        "name": "Аптечки большие",
+        "qty": 4
+      },
+      {
+        "name": "Шприцы",
+        "qty": 15
+      },
+      {
+        "name": "Сачели",
+        "qty": 6
+      }
+    ],
+    "paymentLink": "https://enot.io/pay?m=YOUR_SHOP_ID&oa=10&o={steamid}"
   },
   {
     "id": "kit_khorne",
     "title": "Набор Khorne",
     "price": 20,
     "currency": "RUB",
-    "description": "2 АК с обвесами, болтовка, фулл металл-сет, хил, C4, ракеты и турель.",
     "image": "kit-khorne.png",
-    "paymentLink": "#"
+    "longDescription": "Элитный набор для тотального доминирования: PvP, рейды и оборона.",
+    "items": [
+      {
+        "name": "АК-47 с прицелом и глушителем",
+        "qty": 2
+      },
+      {
+        "name": "Болтовка с прицелом",
+        "qty": 1
+      },
+      {
+        "name": "Патроны 5.56",
+        "qty": 600
+      },
+      {
+        "name": "Патроны к болтовке",
+        "qty": 60
+      },
+      {
+        "name": "Фулл металл-сет (нагрудник, штаны, сапоги, шлем)",
+        "qty": 1
+      },
+      {
+        "name": "Аптечки большие",
+        "qty": 10
+      },
+      {
+        "name": "Шприцы",
+        "qty": 25
+      },
+      {
+        "name": "C4",
+        "qty": 6
+      },
+      {
+        "name": "Ракетница",
+        "qty": 1
+      },
+      {
+        "name": "Ракеты",
+        "qty": 6
+      },
+      {
+        "name": "Турель автоматическая",
+        "qty": 1
+      }
+    ],
+    "paymentLink": "https://enot.io/pay?m=YOUR_SHOP_ID&oa=20&o={steamid}"
   }
 ]

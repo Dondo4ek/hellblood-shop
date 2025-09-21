@@ -15,40 +15,35 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 nav.nav{display:flex;gap:12px;flex-wrap:wrap;font-weight:600}
 nav.nav a{color:#fff;text-decoration:none}
 
-.banner-wrap{max-width:1100px;margin:12px auto 18px auto;padding:0 20px}
-.banner-box{border-radius:18px;overflow:hidden;position:relative;border:1px solid #1f1f1f}
-.banner-bg{background:url('hellblood-banner.png') center/cover no-repeat;width:100%;aspect-ratio:21/9}
-.banner-bg::before{content:'';display:block;padding-top:42.857%}
-.banner-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.55))}
-.banner-content{position:absolute;left:24px;bottom:20px;right:24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.badge{background:rgba(0,0,0,.6);padding:8px 12px;border-radius:12px;color:#fff;display:flex;align-items:center;gap:10px}
-.badge .hb{background:#ff2a2a;color:#fff;font-weight:900;font-size:20px;padding:4px 10px;border-radius:10px;box-shadow:0 0 12px rgba(255,0,0,.6)}
-.badge .title{display:flex;flex-direction:column;line-height:1}
-.badge .title .a{font-size:18px;font-weight:800}
-.badge .title .b{font-size:12px;color:#d0d0d0}
-.banner-nav{background:rgba(0,0,0,.6);padding:8px 12px;border-radius:12px;display:flex;gap:12px;flex-wrap:wrap;font-weight:600}
-.banner-nav a{color:#fff;text-decoration:none}
-
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .card{background:var(--card);border:1px solid #1c1c1c;border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 22px rgba(0,0,0,.35);cursor:pointer;transition:transform .15s ease}
 .card:hover{transform:translateY(-2px)}
 .card img{width:100%;height:auto;display:block;background:#121212}
 .content{padding:14px;display:flex;flex-direction:column;gap:8px}
-.desc{color:var(--muted);font-size:14px;min-height:40px}
+/* Описание на карточках скрываем — только в модалке */
+.content .desc{display:none}
 .row{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
 .price{font-weight:800}
 .btn{display:inline-block;text-decoration:none;background:var(--accent);color:#fff;padding:10px 14px;border-radius:12px;font-weight:800}
 
 /* Modal */
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;justify-content:center;align-items:center;padding:16px;z-index:1000}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;justify-content:center;align-items:center;padding:16px;z-index:1000}
 .modal.show{display:flex}
-.modal-content{background:#111;border:1px solid #272727;border-radius:14px;max-width:460px;width:100%;color:#fff;padding:16px;box-shadow:0 15px 40px rgba(0,0,0,.6)}
+.modal-content{background:#111;border:1px solid #272727;border-radius:14px;max-width:560px;width:100%;color:#fff;padding:16px;box-shadow:0 15px 40px rgba(0,0,0,.6)}
 .modal-image{width:100%;height:auto;border-radius:10px;margin-bottom:10px;background:#000}
 .modal-desc{color:#cfcfcf}
-.modal-row{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.modal-row{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
 .close{appearance:none;border:none;background:#2a2a2a;color:#fff;border-radius:10px;font-size:20px;line-height:1;padding:6px 10px;cursor:pointer;float:right}
 .close:hover{background:#3a3a3a}
+.field{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.field input{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#fff;padding:10px}
+.check{display:flex;align-items:center;gap:8px;margin-top:8px}
+.hint{color:#9a9a9a;font-size:12px;margin-top:8px}
 
-@media (max-width:700px){
-  .banner-content{flex-direction:column;align-items:flex-start;gap:10px}
-}
+.items-wrap{margin-top:8px}
+.items{list-style:none;padding-left:0;margin:6px 0 0 0;display:grid;grid-template-columns:1fr 100px;gap:6px}
+.items li{display:contents}
+.items li span{background:#0e0e0e;border:1px solid #262626;padding:8px;border-radius:10px}
+.items li .qty{text-align:right;color:#ddd}
+
+body.modal-open{overflow:hidden}

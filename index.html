@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HELLBLOOD SHOP — убей или сдохни</title>
-  <meta name="description" content="Официальный магазин HELLBLOOD RUST. VIP, наборы, ресурсы. Быстрая выдача.">
+  <meta name="description" content="Официальный магазин HELLBLOOD RUST. VIP и боевые наборы. Быстрая выдача.">
   <link href="styles.css" rel="stylesheet">
 </head>
 <body>
@@ -19,72 +19,19 @@
       </div>
       <nav class="nav">
         <a href="#shop">Магазин</a>
-        <a href="#how">Как работает</a>
-        <a href="#rules">Правила</a>
-        <a href="#refunds">Возвраты</a>
         <a href="#faq">FAQ</a>
         <a href="#contacts">Контакты</a>
       </nav>
     </div>
   </header>
 
-  <div class="banner-wrap">
-    <div class="banner-box">
-      <div class="banner-bg"></div>
-      <div class="banner-overlay"></div>
-      <div class="banner-content">
-        <div class="badge">
-          <div class="hb">HB</div>
-          <div class="title">
-            <span class="a">HELLBLOOD RUST</span>
-            <span class="b">Официальный магазин • Быстрая выдача</span>
-          </div>
-        </div>
-        <div class="banner-nav">
-          <a href="#shop">Магазин</a>
-          <a href="#how">Как работает</a>
-          <a href="#rules">Правила</a>
-          <a href="#refunds">Возвраты</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contacts">Контакты</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="container">
     <h2 id="shop">Магазин</h2>
     <div id="grid" class="grid"></div>
 
-    <section id="how" class="section">
-      <h2>Как это работает</h2>
-      <ol>
-        <li>Выбери товар и оплати.</li>
-        <li>Зайди на сервер или введи <code>/claim</code> если включено.</li>
-        <li>Получай выдачу — бот/админ подтвердит.</li>
-      </ol>
-    </section>
-
-    <section id="rules" class="section">
-      <h2>Правила (коротко)</h2>
-      <ul>
-        <li>Читерам — бан.</li>
-        <li>Не абузить баги, сообщай в Discord.</li>
-        <li>Не мешай новичкам на спавне.</li>
-        <li>Рейды — ок; IRL-оскорбления — нет.</li>
-      </ul>
-    </section>
-
-    <section id="refunds" class="section">
-      <h2>Возвраты и оплата</h2>
-      <p>Цифровые услуги: возврат по ошибочным платежам/дублированию. Поддержка — Discord или support@твойдомен.</p>
-    </section>
-
     <section id="faq" class="section">
       <h2>FAQ</h2>
-      <p><b>SteamID?</b> Укажи при оплате или напиши в Discord.</p>
-      <p><b>Не пришло?</b> Напиши в поддержку, укажи время/сумму/ник.</p>
-      <p><b>VIP 30 дней?</b> Старт с момента выдачи.</p>
+      <p><b>SteamID?</b> Получи на <a href="https://steamid.io" target="_blank" rel="noopener">steamid.io</a>; используй SteamID64.</p>
     </section>
 
     <section id="contacts" class="section">
@@ -99,11 +46,30 @@
       <button class="close" aria-label="Закрыть">&times;</button>
       <img id="modalImage" src="" alt="" class="modal-image">
       <h3 id="modalTitle"></h3>
-      <p id="modalDescription" class="modal-desc"></p>
+
+      <p id="modalLong" class="modal-desc"></p>
+
+      <div id="itemsWrap" class="items-wrap">
+        <h4>Состав набора</h4>
+        <ul id="modalItems" class="items"></ul>
+      </div>
+
+      <label class="field">
+        <span>SteamID (или ник)*</span>
+        <input id="steamInput" type="text" placeholder="Например: 7656119XXXXXXXXXX">
+      </label>
+
+      <label class="check">
+        <input id="testMode" type="checkbox">
+        <span>Тестовый режим (Enot)</span>
+      </label>
+
       <div class="modal-row">
         <span id="modalPrice" class="price"></span>
         <a id="modalBuy" href="#" target="_blank" class="btn">Купить</a>
       </div>
+
+      <div class="hint">* Нужен для корректной выдачи набора.</div>
     </div>
   </div>
 
