@@ -27,20 +27,20 @@ async function loadProducts(){
     const actions = document.createElement('div');
     actions.className = 'actions';
 
-    const more = document.createElement('button');
-    more.className = 'btn-secondary';
-    more.textContent = 'Подробнее';
-    more.addEventListener('click', (e)=>{ e.stopPropagation(); openModal(p); });
-    actions.appendChild(more);
-
     const btn = document.createElement('a');
     btn.className = 'btn';
     btn.textContent = 'Купить';
     if (p.paymentLink) btn.href = p.paymentLink;
     btn.target = '_blank';
+    // prevent opening modal when clicking Buy
+    btn.addEventListener('click', (e)=>{ e.stopPropagation(); });
     actions.appendChild(btn);
 
     card.appendChild(actions);
+
+    // Open modal when clicking anywhere on the card
+    card.addEventListener('click', ()=> openModal(p));
+
     grid.appendChild(card);
   }
 }
