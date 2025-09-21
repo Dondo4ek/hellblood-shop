@@ -5,7 +5,7 @@
     "price": 15,
     "currency": "RUB",
     "description": "VIP-слоты, /skin, /craft, +дом слотов.",
-    "image": "assets/vip-berserk.png",
+    "image": "vip-berserk.png",
     "paymentLink": "https://example.com/pay/vip_berserk_30"
   },
   {
@@ -14,7 +14,7 @@
     "price": 7,
     "currency": "RUB",
     "description": "АК + 180 патронов, сет брони, 10 хилок.",
-    "image": "assets/kit-raider.png",
+    "image": "kit-raider.png",
     "paymentLink": "https://example.com/pay/kit_raider"
   },
   {
@@ -22,8 +22,8 @@
     "title": "Набор Строителя",
     "price": 6,
     "currency": "RUB",
-    "description": "Строительные инструменты, дерево/камень/металл.",
-    "image": "assets/kit-builder.png",
+    "description": "Строительные инструменты и ресурсы.",
+    "image": "kit-builder.png",
     "paymentLink": "https://example.com/pay/kit_builder"
   },
   {
@@ -32,7 +32,7 @@
     "price": 5,
     "currency": "RUB",
     "description": "Аптечки, шприцы, бинты, еда.",
-    "image": "assets/kit-medic.png",
+    "image": "kit-medic.png",
     "paymentLink": "https://example.com/pay/kit_medic"
   },
   {
@@ -40,8 +40,8 @@
     "title": "Набор Снайпера",
     "price": 8,
     "currency": "RUB",
-    "description": "Болтовка, прицел, 60 патронов, глушитель.",
-    "image": "assets/kit-sniper.png",
+    "description": "Болтовка, прицел, патроны, глушитель.",
+    "image": "kit-sniper.png",
     "paymentLink": "https://example.com/pay/kit_sniper"
   }
 ]
