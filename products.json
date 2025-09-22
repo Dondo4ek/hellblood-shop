@@ -26,7 +26,8 @@
     "chat_prefix": {
       "text": "[LORD]",
       "color": "#8ecfff"
-    }
+    },
+    "category": "kits"
   },
   {
     "id": "kit_daemon_prince",
@@ -61,7 +62,8 @@
     "recycler_multiplier": 1.5,
     "repair_discount_percent": 25,
     "gather_bonus_percent": 10,
-    "daily_kit_name": "prince-daily"
+    "daily_kit_name": "prince-daily",
+    "category": "kits"
   },
   {
     "id": "kit_khorne",
@@ -97,6 +99,726 @@
     "recycler_multiplier": 2.0,
     "repair_discount_percent": 40,
     "gather_bonus_percent": 15,
-    "daily_kit_name": "khorne-daily"
+    "daily_kit_name": "khorne-daily",
+    "category": "kits"
+  },
+  {
+    "id": "quarry_mining",
+    "title": "Горный карьер (Mining Quarry)",
+    "price": 599,
+    "currency": "RUB",
+    "description": "Промышленный карьер для добычи ресурсов.",
+    "image": "img/items/mining-quarry.png",
+    "paymentLink": "#",
+    "details": [
+      "Горный карьер — 1 шт.",
+      "Малый генератор — 1 шт.",
+      "Низкокачественное топливо — 200 шт."
+    ],
+    "category": "quarries"
+  },
+  {
+    "id": "quarry_pumpjack",
+    "title": "Насосная вышка (Pump Jack)",
+    "price": 599,
+    "currency": "RUB",
+    "description": "Добыча нефти и топлива.",
+    "image": "img/items/pumpjack.png",
+    "paymentLink": "#",
+    "details": [
+      "Насосная вышка — 1 шт.",
+      "Малый генератор — 1 шт.",
+      "Низкокачественное топливо — 200 шт."
+    ],
+    "category": "quarries"
+  },
+  {
+    "id": "comp_rope_10",
+    "title": "Компоненты: Верёвка ×10",
+    "price": 15,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/rope.png",
+    "paymentLink": "#",
+    "details": [
+      "Верёвка — 10 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_sewingkit_10",
+    "title": "Компоненты: Набор для шитья ×10",
+    "price": 15,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/sewing-kit.png",
+    "paymentLink": "#",
+    "details": [
+      "Набор для шитья — 10 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_metal_spring_10",
+    "title": "Компоненты: Металлическая пружина ×10",
+    "price": 49,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/metal-spring.png",
+    "paymentLink": "#",
+    "details": [
+      "Металлическая пружина — 10 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_metal_blade_10",
+    "title": "Компоненты: Металлическое лезвие ×10",
+    "price": 19,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/metal-blade.png",
+    "paymentLink": "#",
+    "details": [
+      "Металлическое лезвие — 10 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_gears_10",
+    "title": "Компоненты: Шестерёнки ×10",
+    "price": 69,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/gears.png",
+    "paymentLink": "#",
+    "details": [
+      "Шестерёнки — 10 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_metal_pipe_10",
+    "title": "Компоненты: Металлическая труба ×10",
+    "price": 39,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/metal-pipe.png",
+    "paymentLink": "#",
+    "details": [
+      "Металлическая труба — 10 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_roadsigns_10",
+    "title": "Компоненты: Дорожные знаки ×10",
+    "price": 39,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/roadsigns.png",
+    "paymentLink": "#",
+    "details": [
+      "Дорожные знаки — 10 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_sheet_metal_10",
+    "title": "Компоненты: Листовой металл ×10",
+    "price": 39,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/sheet-metal.png",
+    "paymentLink": "#",
+    "details": [
+      "Листовой металл — 10 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_smg_body_5",
+    "title": "Компоненты: Корпус ПП ×5",
+    "price": 89,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/smg-body.png",
+    "paymentLink": "#",
+    "details": [
+      "Корпус пистолета-пулемёта — 5 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_rifle_body_5",
+    "title": "Компоненты: Корпус винтовки ×5",
+    "price": 109,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/rifle-body.png",
+    "paymentLink": "#",
+    "details": [
+      "Корпус винтовки — 5 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_semi_body_5",
+    "title": "Компоненты: Корпус полуавтомата ×5",
+    "price": 69,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/semi-body.png",
+    "paymentLink": "#",
+    "details": [
+      "Корпус полуавтоматического оружия — 5 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_tech_trash_10",
+    "title": "Компоненты: Тех.хлам ×10",
+    "price": 129,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/tech-trash.png",
+    "paymentLink": "#",
+    "details": [
+      "Технологический хлам — 10 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_targeting_5",
+    "title": "Компоненты: Наводящий компьютер ×5",
+    "price": 199,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/targeting-computer.png",
+    "paymentLink": "#",
+    "details": [
+      "Наводящий компьютер — 5 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_cctv_5",
+    "title": "Компоненты: CCTV камера ×5",
+    "price": 199,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/cctv-camera.png",
+    "paymentLink": "#",
+    "details": [
+      "CCTV камера — 5 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_fuse_5",
+    "title": "Компоненты: Электропредохранитель ×5",
+    "price": 59,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/fuse.png",
+    "paymentLink": "#",
+    "details": [
+      "Электропредохранитель — 5 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_tarp_10",
+    "title": "Компоненты: Брезент ×10",
+    "price": 19,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/tarp.png",
+    "paymentLink": "#",
+    "details": [
+      "Брезент — 10 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "comp_propane_10",
+    "title": "Компоненты: Пустой пропановый баллон ×10",
+    "price": 19,
+    "currency": "RUB",
+    "description": "Пакет компонентов выбранного типа.",
+    "image": "img/items/propane-tank.png",
+    "paymentLink": "#",
+    "details": [
+      "Пустой пропановый баллон — 10 шт."
+    ],
+    "category": "components"
+  },
+  {
+    "id": "wpn_eoka",
+    "title": "Оружие: Ёлка (Eoka Pistol)",
+    "price": 9,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/eoka-pistol.png",
+    "paymentLink": "#",
+    "details": [
+      "Eoka Pistol — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_revolver",
+    "title": "Оружие: Револьвер",
+    "price": 19,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/revolver.png",
+    "paymentLink": "#",
+    "details": [
+      "Револьвер — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_semi_pistol",
+    "title": "Оружие: Полуавтоматический пистолет",
+    "price": 29,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/semi-auto-pistol.png",
+    "paymentLink": "#",
+    "details": [
+      "Полуавтоматический пистолет — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_python",
+    "title": "Оружие: Питон",
+    "price": 39,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/python.png",
+    "paymentLink": "#",
+    "details": [
+      "Python — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_m92",
+    "title": "Оружие: M92",
+    "price": 49,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/m92.png",
+    "paymentLink": "#",
+    "details": [
+      "M92 — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_custom_smg",
+    "title": "Оружие: Кастомный ПП",
+    "price": 39,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/custom-smg.png",
+    "paymentLink": "#",
+    "details": [
+      "Custom SMG — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_thompson",
+    "title": "Оружие: Томпсон",
+    "price": 49,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/thompson.png",
+    "paymentLink": "#",
+    "details": [
+      "Thompson — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_mp5",
+    "title": "Оружие: MP5A4",
+    "price": 69,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/mp5a4.png",
+    "paymentLink": "#",
+    "details": [
+      "MP5A4 — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_waterpipe",
+    "title": "Оружие: Самопал (Waterpipe)",
+    "price": 9,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/waterpipe-shotgun.png",
+    "paymentLink": "#",
+    "details": [
+      "Waterpipe Shotgun — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_db",
+    "title": "Оружие: Двустволка",
+    "price": 19,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/double-barrel-shotgun.png",
+    "paymentLink": "#",
+    "details": [
+      "Double Barrel — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_pump",
+    "title": "Оружие: Помповый дробовик",
+    "price": 39,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/pump-shotgun.png",
+    "paymentLink": "#",
+    "details": [
+      "Pump Shotgun — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_spas",
+    "title": "Оружие: Spas-12",
+    "price": 79,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/spas-12.png",
+    "paymentLink": "#",
+    "details": [
+      "Spas-12 — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_sar",
+    "title": "Оружие: Полуавтоматическая винтовка (SAR)",
+    "price": 49,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/semi-auto-rifle.png",
+    "paymentLink": "#",
+    "details": [
+      "Semi-Automatic Rifle — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_ak",
+    "title": "Оружие: АК-47",
+    "price": 99,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/assault-rifle.png",
+    "paymentLink": "#",
+    "details": [
+      "Assault Rifle — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_bolt",
+    "title": "Оружие: Болтовая винтовка",
+    "price": 99,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/bolt-action-rifle.png",
+    "paymentLink": "#",
+    "details": [
+      "Bolt Action Rifle — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_l96",
+    "title": "Оружие: L96",
+    "price": 199,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/l96.png",
+    "paymentLink": "#",
+    "details": [
+      "L96 — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_m39",
+    "title": "Оружие: M39",
+    "price": 89,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/m39.png",
+    "paymentLink": "#",
+    "details": [
+      "M39 — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_m249",
+    "title": "Оружие: M249",
+    "price": 399,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/m249.png",
+    "paymentLink": "#",
+    "details": [
+      "M249 — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "wpn_rocket_launcher",
+    "title": "Оружие: РПГ (Rocket Launcher)",
+    "price": 199,
+    "currency": "RUB",
+    "description": "Единица оружия выбранного типа.",
+    "image": "img/items/rocket-launcher.png",
+    "paymentLink": "#",
+    "details": [
+      "Rocket Launcher — 1 шт."
+    ],
+    "category": "weapons"
+  },
+  {
+    "id": "elec_small_battery",
+    "title": "Электрика: Малая батарея",
+    "price": 59,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/small-battery.png",
+    "paymentLink": "#",
+    "details": [
+      "Small Rechargeable Battery — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_large_battery",
+    "title": "Электрика: Большая батарея",
+    "price": 149,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/large-battery.png",
+    "paymentLink": "#",
+    "details": [
+      "Large Rechargeable Battery — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_wind_turbine",
+    "title": "Электрика: Ветряная турбина",
+    "price": 299,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/wind-turbine.png",
+    "paymentLink": "#",
+    "details": [
+      "Wind Turbine — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_solar_panel",
+    "title": "Электрика: Солнечная панель",
+    "price": 79,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/solar-panel.png",
+    "paymentLink": "#",
+    "details": [
+      "Solar Panel — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_button",
+    "title": "Электрика: Кнопка (Button)",
+    "price": 9,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/button.png",
+    "paymentLink": "#",
+    "details": [
+      "Button — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_timer",
+    "title": "Электрика: Таймер (Timer)",
+    "price": 19,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/timer.png",
+    "paymentLink": "#",
+    "details": [
+      "Timer — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_counter",
+    "title": "Электрика: Счётчик (Counter)",
+    "price": 19,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/counter.png",
+    "paymentLink": "#",
+    "details": [
+      "Counter — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_splitter",
+    "title": "Электрика: Сплиттер (Splitter)",
+    "price": 19,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/splitter.png",
+    "paymentLink": "#",
+    "details": [
+      "Electrical Splitter — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_branch",
+    "title": "Электрика: Разветвитель (Branch)",
+    "price": 19,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/branch.png",
+    "paymentLink": "#",
+    "details": [
+      "Electrical Branch — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_memory",
+    "title": "Электрика: Ячейка памяти",
+    "price": 39,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/memory-cell.png",
+    "paymentLink": "#",
+    "details": [
+      "Memory Cell — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_blocker",
+    "title": "Электрика: Блокирователь (Blocker)",
+    "price": 19,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/blocker.png",
+    "paymentLink": "#",
+    "details": [
+      "Blocker — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_smart_switch",
+    "title": "Электрика: Smart Switch",
+    "price": 49,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/smart-switch.png",
+    "paymentLink": "#",
+    "details": [
+      "Smart Switch — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_hbhf",
+    "title": "Электрика: Датчик HBHF",
+    "price": 59,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/hbhf-sensor.png",
+    "paymentLink": "#",
+    "details": [
+      "HBHF Sensor — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_laser",
+    "title": "Электрика: Лазерный датчик",
+    "price": 39,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/laser-detector.png",
+    "paymentLink": "#",
+    "details": [
+      "Laser Detector — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_siren",
+    "title": "Электрика: Сирена",
+    "price": 29,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/siren-light.png",
+    "paymentLink": "#",
+    "details": [
+      "Siren Light — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_alarm",
+    "title": "Электрика: Звуковая сигнализация",
+    "price": 29,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/smart-alarm.png",
+    "paymentLink": "#",
+    "details": [
+      "Smart Alarm — 1 шт."
+    ],
+    "category": "electric"
+  },
+  {
+    "id": "elec_random_switch",
+    "title": "Электрика: Случайный переключатель (Random Switch)",
+    "price": 19,
+    "currency": "RUB",
+    "description": "Электрический компонент.",
+    "image": "img/items/random-switch.png",
+    "paymentLink": "#",
+    "details": [
+      "Random Switch — 1 шт."
+    ],
+    "category": "electric"
   }
 ]

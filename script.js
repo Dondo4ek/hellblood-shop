@@ -1,7 +1,23 @@
 console.log('[HELLBLOOD] modal pack v6 loaded');
+// === HELLBLOOD filters injected ===
+function renderFilters(items, onFilter){
+  const bar = document.querySelector('#filterbar'); if(!bar) return;
+  const cats = Array.from(new Set(items.map(p => p.category || 'other')));
+  const order = ['kits','quarries','components','weapons','electric','other'];
+  cats.sort((a,b)=> order.indexOf(a) - order.indexOf(b));
+  bar.innerHTML='';
+  const makeBtn=(label,value)=>{ const b=document.createElement('button'); b.className='filter-btn'; b.textContent=label; b.dataset.value=value;
+    b.addEventListener('click',()=>{ bar.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active')); b.classList.add('active'); onFilter(value); });
+    return b; };
+  bar.appendChild(makeBtn('Все','all'));
+  const labels={kits:'Киты',quarries:'Карьеры',components:'Компоненты',weapons:'Оружие',electric:'Электрика',other:'Другое'};
+  for(const c of cats){ bar.appendChild(makeBtn(labels[c]||c,c)); }
+  bar.querySelector('.filter-btn').classList.add('active');
+}
 async function loadProducts(){
   const res = await fetch('products.json');
   const items = await res.json();
+  renderFilters(items,(cat)=>applyFilter(cat));
   const grid = document.querySelector('#grid');
   grid.className = 'grid';
   grid.innerHTML = '';
@@ -185,4 +201,9 @@ function trapFocus(container){
   }
   container.addEventListener('keydown', onKey);
   return ()=> container.removeEventListener('keydown', onKey);
+}
+
+function applyFilter(cat){
+  const cards=document.querySelectorAll('#grid .card');
+  cards.forEach(el=>{ const ok=(cat==='all')||(el.dataset.category===cat); el.dataset.hidden = ok ? "false" : "true"; });
 }
