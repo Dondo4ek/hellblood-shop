@@ -97,3 +97,39 @@ h1{color:#ff2a2a}
 .perk b{color:#ffd2d2}
 .badge{display:inline-block;padding:2px 8px;border:1px solid #3a1515;border-radius:999px;font-size:12px;color:#ffb3b3;background:#1e0c0c}
 .prefix{display:inline-block;margin-top:6px;padding:2px 8px;border-radius:6px;font-weight:800;font-size:13px;letter-spacing:.5px}
+
+/* ===== HELLBLOOD BEAUTY PACK v8 ===== */
+
+/* Tier ribbon */
+.modal-dialog{position:relative}
+.ribbon{position:absolute; top:10px; left:-8px; background:var(--tier,#ff2a2a); color:#0b0b0b; font-weight:900;
+  padding:6px 12px; border-top-right-radius:10px; border-bottom-right-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.ribbon small{display:block; font-size:11px; opacity:.85; letter-spacing:.4px}
+.ribbon b{font-size:13px; letter-spacing:.6px}
+
+/* Section */
+.section{margin:10px 0 12px 0}
+.section-title{display:flex; align-items:center; gap:8px; margin:0 0 8px 0; font-size:14px; letter-spacing:.4px;
+  text-transform:uppercase; color:#ff5a5a; font-weight:900}
+.section-title .bar{flex:1; height:1px; background:linear-gradient(90deg,#2b1010,#3a1515 60%, transparent)}
+
+/* Detail list */
+.detail-list{margin:0; padding:0 0 0 0; list-style:none; display:grid; gap:6px}
+.detail-list li{display:flex; gap:8px; align-items:flex-start; background:linear-gradient(180deg,#151010,#110c0c);
+  border:1px solid #261010; border-radius:8px; padding:6px 10px; line-height:1.25}
+.detail-list li:before{content:"☠"; opacity:.9}
+
+/* Perks grid */
+.perks{margin-top:12px; padding:12px; border:1px solid #2a0f0f; border-radius:12px; background:linear-gradient(180deg,#1a0d0d,#120808)}
+.perks-title{margin:0 0 8px 0; color:#ff2a2a; font-weight:900; letter-spacing:.5px; text-transform:uppercase}
+.perks-grid{display:grid; grid-template-columns:1fr; gap:8px}
+@media (min-width: 520px){ .perks-grid{ grid-template-columns:1fr 1fr } }
+.perk-card{display:flex; gap:10px; align-items:center; background:linear-gradient(180deg,#160b0b,#120808);
+  border:1px solid #2d0f0f; border-radius:10px; padding:8px 10px}
+.perk-icon{width:26px; height:26px; display:grid; place-items:center; border-radius:8px; background:#1f0b0b; border:1px solid #341010; font-size:14px}
+.perk-text b{color:#ffd2d2}
+
+/* Modal image and price polish */
+.modal-body img{border:1px solid #201010; border-radius:10px; box-shadow:inset 0 0 0 1px rgba(255,42,42,.08); margin-bottom:12px}
+.modal-body .price{font-size:18px; font-weight:900; letter-spacing:.6px; background:linear-gradient(180deg,#160b0b,#100808);
+  border:1px solid #2b1010; border-radius:10px; padding:8px 10px; display:inline-block}

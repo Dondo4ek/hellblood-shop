@@ -46,6 +46,7 @@ async function loadProducts(){
   }
 }
 
+/* v8: beauty pack */
 function openModal(p){
   const modal = document.getElementById('product-modal');
   const titleEl = modal.querySelector('#modal-title');
@@ -55,12 +56,23 @@ function openModal(p){
   const buyEl = modal.querySelector('#modal-buy');
 
   titleEl.textContent = p.title || 'Детали набора';
+  // Apply tier color from chat_prefix
+  const tierColor = (p.chat_prefix && p.chat_prefix.color) ? p.chat_prefix.color : getComputedStyle(document.documentElement).getPropertyValue('--accent') || '#ff2a2a';
+  modal.querySelector('.modal-dialog').style.setProperty('--tier', tierColor);
+  // Ribbon
+  let ribbon = modal.querySelector('.ribbon');
+  if(!ribbon){ ribbon = document.createElement('div'); ribbon.className='ribbon'; modal.querySelector('.modal-dialog').appendChild(ribbon); }
+  ribbon.innerHTML = '<small>Ранг</small><b>' + (p.chat_prefix && p.chat_prefix.text ? p.chat_prefix.text.replace(/[\[\]]/g,'') : 'HELLBLOOD') + '</b>';
   imgEl.src = p.image || '';
   imgEl.alt = p.title || '';
 
   // Prefer structured lists if provided
   let html = '';
+  // Section: Details
+  html += '<div class="section">';
+  html += '<div class="section-title">Состав набора<div class="bar"></div></div>';
   if (Array.isArray(p.details)) {
+    html += '<ul class="detail-list">';
     html += '<ul>';
     for (const it of p.details) { html += '<li>' + it + '</li>'; }
     html += '</ul>';
@@ -70,18 +82,28 @@ function openModal(p){
     html += '<p>' + (p.description || '') + '</p>';
   }
   
-  // HELLBLOOD perks (sethome / tp) rendering
-  if (typeof p.sethome_count === 'number' || (typeof p.tp_cooldown_sec === 'number' && typeof p.tp_time_sec === 'number')){
+  
+  
+  // HELLBLOOD perks (sethome / tp / extra) rendering — BEAUTY v8
+  if (typeof p.sethome_count === 'number' || (typeof p.tp_cooldown_sec === 'number' && typeof p.tp_time_sec === 'number') ||
+      typeof p.backpack_slots === 'number' || typeof p.smelt_multiplier === 'number' || typeof p.recycler_multiplier === 'number' ||
+      typeof p.repair_discount_percent === 'number' || typeof p.gather_bonus_percent === 'number' || p.daily_kit_name){
     html += '<div class="perks">';
     html += '<h4 class="perks-title">Привилегии HELLBLOOD</h4>';
-    if (typeof p.sethome_count === 'number'){
-      html += '<div class="perk"><span class="badge">/sethome</span><div><b>/sethome</b>: ' + p.sethome_count + ' слота</div></div>';
-    }
-    if (typeof p.tp_cooldown_sec === 'number' && typeof p.tp_time_sec === 'number'){
-      html += '<div class="perk"><span class="badge">/tp</span><div><b>/tp</b>: перезарядка ' + p.tp_cooldown_sec + ' сек • время ' + p.tp_time_sec + ' сек</div></div>';
-    }
-    html += '</div>';
+    html += '<div class="perks-grid">';
+    if (typeof p.sethome_count === 'number'){ html += '<div class="perk-card"><div class="perk-icon">⌂</div><div class="perk-text"><b>/sethome</b>: ' + p.sethome_count + ' слота</div></div>'; }
+    if (typeof p.tp_cooldown_sec === 'number' && typeof p.tp_time_sec === 'number'){ html += '<div class="perk-card"><div class="perk-icon">↯</div><div class="perk-text"><b>/tp</b>: кд ' + p.tp_cooldown_sec + 'с • время ' + p.tp_time_sec + 'с</div></div>'; }
+    if (typeof p.backpack_slots === 'number'){ html += '<div class="perk-card"><div class="perk-icon">🎒</div><div class="perk-text"><b>Рюкзак</b>: ' + p.backpack_slots + ' слотов</div></div>'; }
+    if (typeof p.smelt_multiplier === 'number'){ html += '<div class="perk-card"><div class="perk-icon">🔥</div><div class="perk-text"><b>Плавка</b>: x' + p.smelt_multiplier + '</div></div>'; }
+    if (typeof p.recycler_multiplier === 'number'){ html += '<div class="perk-card"><div class="perk-icon">♺</div><div class="perk-text"><b>Переработчик</b>: x' + p.recycler_multiplier + '</div></div>'; }
+    if (typeof p.repair_discount_percent === 'number'){ html += '<div class="perk-card"><div class="perk-icon">⚙️</div><div class="perk-text"><b>Ремонт</b>: -' + p.repair_discount_percent + '%</div></div>'; }
+    if (typeof p.gather_bonus_percent === 'number'){ html += '<div class="perk-card"><div class="perk-icon">⛏</div><div class="perk-text"><b>Добыча</b>: +' + p.gather_bonus_percent + '%</div></div>'; }
+    if (p.daily_kit_name){ html += '<div class="perk-card"><div class="perk-icon">⏳</div><div class="perk-text"><b>Ежедневка</b>: /kit ' + p.daily_kit_name + '</div></div>'; }
+    html += '</div>'; /* perks-grid */
+    html += '</div>'; /* perks */
   }
+
+
 
   
   // HELLBLOOD chat prefix
@@ -93,6 +115,7 @@ function openModal(p){
     html += '</div>';
   }
 
+  html += '</div>'; /* end section */
   descEl.innerHTML = html;
 
   priceEl.textContent = (p.price !== undefined ? p.price : '') + (p.currency ? (' ' + p.currency) : '');
