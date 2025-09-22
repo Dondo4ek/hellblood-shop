@@ -55,7 +55,7 @@ function openModal(p){
   const priceEl = modal.querySelector('#modal-price');
   const buyEl = modal.querySelector('#modal-buy');
 
-  titleEl.textContent = p.title || 'Детали набора';
+  titleEl.textContent = '';
   // Apply tier color from chat_prefix
   const tierColor = (p.chat_prefix && p.chat_prefix.color) ? p.chat_prefix.color : getComputedStyle(document.documentElement).getPropertyValue('--accent') || '#ff2a2a';
   modal.querySelector('.modal-dialog').style.setProperty('--tier', tierColor);
