@@ -50,7 +50,6 @@
       .banner-content{flex-direction:column;align-items:flex-start;gap:10px}
     }
   </style>
-  <script src="/hb-shop-block.js"></script>
 </head>
 <body>
   <header>
@@ -99,8 +98,10 @@
   </div>
 
   <div class="container">
-    <h2 id="shop">Магазин</h2>
-    <div id="grid" class="grid"></div>
+    <section id="shop">
+  <h2>Магазин</h2>
+  <hb-shop-block src="/products.json"></hb-shop-block>
+</section>
 
     <section id="how" style="margin-top:28px">
       <h2>Как это работает</h2>
@@ -160,5 +161,6 @@
     </div>
   </div>
 
+  <script src="hb-shop-block.js"></script>
 </body>
 </html>
