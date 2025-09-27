@@ -219,10 +219,35 @@ class HBShopBlock extends HTMLElement{
     // Build description + privileges
     let html = '';
     if(item.description){ html += `<p>${item.description}</p>`; }
-    const perks = Array.isArray(item.privileges) ? item.privileges
-                 : (Array.isArray(item.details) ? item.details : []);
-    if(perks.length){
-      html += `<h4 style="margin:12px 0 6px 0">Привилегии</h4><ul>` + perks.map(d=>`<li>${d}</li>`).join('') + `</ul>`;
+
+    // --- Privileges block (for kits) ---
+    const perksList = [];
+    if((item.category||'').toLowerCase()==='kits'){
+      if(typeof item.sethome_count === 'number') perksList.push(`Количество SetHome: <b>${item.sethome_count}</b>`);
+      if(typeof item.tp_cooldown_sec === 'number') perksList.push(`КД телепорта: <b>${item.tp_cooldown_sec} сек</b>`);
+      if(typeof item.tp_time_sec === 'number') perksList.push(`Время телепорта: <b>${item.tp_time_sec} сек</b>`);
+      if(item.chat_prefix && item.chat_prefix.text) perksList.push(`Префикс в чате: <b>${item.chat_prefix.text}</b>`);
+      if(typeof item.backpack_slots === 'number') perksList.push(`Слоты рюкзака: <b>${item.backpack_slots}</b>`);
+      if(typeof item.smelt_multiplier === 'number') perksList.push(`Плавка ×<b>${item.smelt_multiplier}</b>`);
+      if(typeof item.recycler_multiplier === 'number') perksList.push(`Переработчик ×<b>${item.recycler_multiplier}</b>`);
+      if(typeof item.repair_discount_percent === 'number') perksList.push(`Скидка на ремонт: <b>${item.repair_discount_percent}%</b>`);
+      if(typeof item.gather_bonus_percent === 'number') perksList.push(`Бонус добычи: <b>${item.gather_bonus_percent}%</b>`);
+      if(item.daily_kit_name) perksList.push(`Ежедневный кит: <b>${item.daily_kit_name}</b>`);
+    }
+
+    // If the item already has 'privileges' array, append it too
+    if(Array.isArray(item.privileges)){
+      for(const p of item.privileges){ perksList.push(p); }
+    }
+
+    if(perksList.length){
+      html += `<h4 style="margin:12px 0 6px 0">Привилегии</h4><ul>` + perksList.map(d=>`<li>${d}</li>`).join('') + `</ul>`;
+    }
+
+    // --- Composition/details ---
+    const detailsList = Array.isArray(item.details) ? item.details : [];
+    if(detailsList.length){
+      html += `<h4 style="margin:12px 0 6px 0">Состав</h4><ul>` + detailsList.map(d=>`<li>${d}</li>`).join('') + `</ul>`;
     }
     if(descEl){ descEl.innerHTML = html || '<p>Описание отсутствует</p>'; }
 
