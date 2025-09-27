@@ -1,0 +1,98 @@
+{
+  "generated_from": "hellblood-shop-main (4)/products.json",
+  "blocks": [
+    {
+      "key": "kits",
+      "title_ru": "КИТЫ",
+      "count": 3,
+      "items": [
+        "kit_daemon_prince",
+        "kit_khorne",
+        "kit_lord"
+      ]
+    },
+    {
+      "key": "weapons",
+      "title_ru": "ОРУЖИЕ",
+      "count": 19,
+      "items": [
+        "wpn_l96",
+        "wpn_m249",
+        "wpn_m39",
+        "wpn_m92",
+        "wpn_mp5",
+        "wpn_spas",
+        "wpn_ak",
+        "wpn_bolt",
+        "wpn_db",
+        "wpn_custom_smg",
+        "wpn_python",
+        "wpn_sar",
+        "wpn_semi_pistol",
+        "wpn_pump",
+        "wpn_revolver",
+        "wpn_rocket_launcher",
+        "wpn_waterpipe",
+        "wpn_thompson",
+        "wpn_eoka"
+      ]
+    },
+    {
+      "key": "components",
+      "title_ru": "КОМПОНЕНТЫ",
+      "count": 17,
+      "items": [
+        "comp_cctv_5",
+        "comp_tarp_10",
+        "comp_rope_10",
+        "comp_roadsigns_10",
+        "comp_rifle_body_5",
+        "comp_semi_body_5",
+        "comp_smg_body_5",
+        "comp_sheet_metal_10",
+        "comp_metal_spring_10",
+        "comp_metal_pipe_10",
+        "comp_metal_blade_10",
+        "comp_sewingkit_10",
+        "comp_targeting_5",
+        "comp_propane_10",
+        "comp_tech_trash_10",
+        "comp_gears_10",
+        "comp_fuse_5"
+      ]
+    },
+    {
+      "key": "electric",
+      "title_ru": "ЭЛЕКТРИКА",
+      "count": 17,
+      "items": [
+        "elec_smart_switch",
+        "elec_blocker",
+        "elec_large_battery",
+        "elec_wind_turbine",
+        "elec_hbhf",
+        "elec_alarm",
+        "elec_button",
+        "elec_laser",
+        "elec_small_battery",
+        "elec_branch",
+        "elec_siren",
+        "elec_random_switch",
+        "elec_solar_panel",
+        "elec_splitter",
+        "elec_counter",
+        "elec_timer",
+        "elec_memory"
+      ]
+    },
+    {
+      "key": "quarries",
+      "title_ru": "КАРЬЕРЫ",
+      "count": 2,
+      "items": [
+        "quarry_mining",
+        "quarry_pumpjack"
+      ]
+    }
+  ]
+}
