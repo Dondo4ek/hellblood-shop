@@ -201,41 +201,79 @@ class HBShopBlock extends HTMLElement{
     this.shadowRoot.querySelector('.counter').textContent = `Показано: ${items.length}`;
   }
 
+  
   _openModal(item){
-    // Hook into existing page modal by ID (outside shadow DOM)
     const modal = document.getElementById(this._modalId);
     if(!modal){
       console.warn('Modal element not found:', this._modalId);
       return;
     }
-    // Fill content
+    // ---- Fill content
     const imgEl = modal.querySelector('#modal-image');
     const descEl = modal.querySelector('#modal-description');
     const priceEl = modal.querySelector('#modal-price');
     const buyEl = modal.querySelector('#modal-buy');
 
     if(imgEl){ imgEl.src = item.image || ''; imgEl.alt = item.title || ''; }
-    if(descEl){
-      const list = Array.isArray(item.details) ? ('<ul>'+ item.details.map(d=>`<li>${d}</li>`).join('') +'</ul>') : '';
-      descEl.innerHTML = (item.description ? `<p>${item.description}</p>` : '') + list;
+
+    // Build description + privileges
+    let html = '';
+    if(item.description){ html += `<p>${item.description}</p>`; }
+    const perks = Array.isArray(item.privileges) ? item.privileges
+                 : (Array.isArray(item.details) ? item.details : []);
+    if(perks.length){
+      html += `<h4 style="margin:12px 0 6px 0">Привилегии</h4><ul>` + perks.map(d=>`<li>${d}</li>`).join('') + `</ul>`;
     }
+    if(descEl){ descEl.innerHTML = html || '<p>Описание отсутствует</p>'; }
+
     if(priceEl){ priceEl.textContent = `${item.price ?? ''} ${item.currency || ''}`.trim(); }
     if(buyEl){ buyEl.href = item.paymentLink || '#'; buyEl.target = item.paymentLink ? '_blank' : '_self'; }
 
-    // Show modal (expects classes and ARIA like in your index.html)
+    // ---- Center modal without touching global CSS
+    // Backdrop
+    Object.assign(modal.style, {
+      position: 'fixed',
+      inset: '0',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'rgba(0,0,0,0.6)',
+      zIndex: 9999
+    });
     modal.setAttribute('aria-hidden','false');
-    modal.style.display = 'block';
+
+    // Dialog sizing (safe minimal styling)
+    const dialog = modal.querySelector('.modal-dialog');
+    if(dialog){
+      Object.assign(dialog.style, {
+        maxWidth: '560px',
+        width: 'min(92vw, 560px)',
+        borderRadius: '14px',
+        overflow: 'hidden',
+        background: '#141414',
+        border: '1px solid #2a2a2a',
+        boxShadow: '0 12px 40px rgba(0,0,0,.6)'
+      });
+      // Tweak inner image if present
+      const img = modal.querySelector('#modal-image');
+      if(img){
+        img.style.display = 'block';
+        img.style.width = '100%';
+        img.style.maxHeight = '240px';
+        img.style.objectFit = 'contain';
+        img.style.background = '#0f0f0f';
+        img.style.border = 'none';
+      }
+    }
 
     const closeBtns = modal.querySelectorAll('.modal-close');
     const close = ()=>{
       modal.setAttribute('aria-hidden','true');
       modal.style.display = 'none';
+      modal.style.background = ''; // cleanup just in case
     };
     closeBtns.forEach(b=> b.onclick = close);
-    // Close on backdrop click if desired
-    modal.addEventListener('click', (e)=>{
-      if(e.target === modal) close();
-    }, {once:true});
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) close(); }, {once:true});
   }
 }
 
