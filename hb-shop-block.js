@@ -217,10 +217,26 @@ class HBShopBlock extends HTMLElement{
     if(imgEl){ imgEl.src = item.image || ''; imgEl.alt = item.title || ''; }
 
     // Build description + privileges
+    
     let html = '';
-    if(item.description){ html += `<p>${item.description}</p>`; }
 
-    // --- Privileges block (for kits) ---
+    // --- Base description ---
+    if(item.description){
+      html += `<p style="margin:8px 0 12px 0; line-height:1.5; color:#ddd">${item.description}</p>`;
+    }
+
+    // --- Composition / Состав ---
+    const detailsList = Array.isArray(item.details) ? item.details : [];
+    if(detailsList.length){
+      html += `<div style="margin:10px 0 14px 0">
+        <h4 style="margin:0 0 8px 0; font-weight:800; color:#ff3333">Состав</h4>
+        <ul style="margin:0; padding-left:18px; line-height:1.5; color:#eee">
+          ${detailsList.map(d=>`<li style="margin:3px 0">${d}</li>`).join('')}
+        </ul>
+      </div>`;
+    }
+
+    // --- Privileges / Привилегии (below composition) ---
     const perksList = [];
     if((item.category||'').toLowerCase()==='kits'){
       if(typeof item.sethome_count === 'number') perksList.push(`Количество SetHome: <b>${item.sethome_count}</b>`);
@@ -234,22 +250,22 @@ class HBShopBlock extends HTMLElement{
       if(typeof item.gather_bonus_percent === 'number') perksList.push(`Бонус добычи: <b>${item.gather_bonus_percent}%</b>`);
       if(item.daily_kit_name) perksList.push(`Ежедневный кит: <b>${item.daily_kit_name}</b>`);
     }
-
-    // If the item already has 'privileges' array, append it too
     if(Array.isArray(item.privileges)){
       for(const p of item.privileges){ perksList.push(p); }
     }
-
     if(perksList.length){
-      html += `<h4 style="margin:12px 0 6px 0">Привилегии</h4><ul>` + perksList.map(d=>`<li>${d}</li>`).join('') + `</ul>`;
+      html += `<div style="margin:10px 0 0 0">
+        <h4 style="margin:0 0 8px 0; font-weight:800; color:#ff3333">Привилегии</h4>
+        <ul style="margin:0; padding-left:18px; line-height:1.5; color:#eee">
+          ${perksList.map(d=>`<li style="margin:3px 0">${d}</li>`).join('')}
+        </ul>
+      </div>`;
     }
 
-    // --- Composition/details ---
-    const detailsList = Array.isArray(item.details) ? item.details : [];
-    if(detailsList.length){
-      html += `<h4 style="margin:12px 0 6px 0">Состав</h4><ul>` + detailsList.map(d=>`<li>${d}</li>`).join('') + `</ul>`;
+    if(!item.description && !detailsList.length && !perksList.length){
+      html = '<p>Описание отсутствует</p>';
     }
-    if(descEl){ descEl.innerHTML = html || '<p>Описание отсутствует</p>'; }
+if(descEl){ descEl.innerHTML = html || '<p>Описание отсутствует</p>'; }
 
     if(priceEl){ priceEl.textContent = `${item.price ?? ''} ${item.currency || ''}`.trim(); }
     if(buyEl){ buyEl.href = item.paymentLink || '#'; buyEl.target = item.paymentLink ? '_blank' : '_self'; }
