@@ -12,24 +12,27 @@ class HBShopBlock extends HTMLElement{
     };
     this._style = `
       *{box-sizing:border-box} :host{display:block}
-      .wrap{background:#0b0b0b;color:#e6e6e6;border:1px solid #222;border-radius:14px;overflow:hidden}
-      .head{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 14px;background:#0f0f10;border-bottom:1px solid #1a1a1a}
-      .tabs{display:flex;gap:8px;flex-wrap:wrap}
-      .tab{padding:8px 10px;border:1px solid #2a2a2a;border-radius:10px;background:#131313;cursor:pointer;user-select:none;font:600 14px/1 system-ui}
-      .tab.active{border-color:#b30000;box-shadow:0 0 0 1px #b30000 inset}
-      .controls{display:flex;gap:8px;flex-wrap:wrap}
-      input[type=search],select{padding:8px 10px;border-radius:10px;border:1px solid #2a2a2a;background:#141414;color:#e6e6e6}
-      .counter{font-size:12px;color:#aaa;padding:0 10px}
-      .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;padding:12px}
-      .card{background:#121212;border:1px solid #1f1f1f;border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
-      .thumb{width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;background:#0e0e0e;border-bottom:1px solid #1d1d1d}
-      .thumb img{max-width:85%;max-height:85%;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))}
-      .body{padding:10px 12px;display:flex;flex-direction:column;gap:6px}
-      .title{font:700 15px/1.2 system-ui}
-      .desc{color:#bdbdbd;font:400 13px/1.3 system-ui;min-height:2.6em}
-      .price{font:800 14px/1 system-ui}
-      .buy{margin-top:auto;display:inline-block;text-align:center;padding:8px 10px;border-radius:10px;border:1px solid #2b0b0b;background:#160000;color:#ff4d4d;text-decoration:none;font:700 14px system-ui}
-      .empty{padding:14px;color:#f55}
+.wrap{background:#1a1a1a;color:#e6e6e6;border:1px solid #333;border-radius:14px;overflow:hidden}
+.head{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 14px;background:#111;border-bottom:1px solid #222}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{padding:8px 10px;border:1px solid #444;border-radius:10px;background:#222;cursor:pointer;user-select:none;font:600 14px/1 system-ui;color:#eee}
+.tab.active{border-color:#ff3333;box-shadow:0 0 0 1px #ff3333 inset;color:#ff3333}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+input[type=search],select{padding:8px 10px;border-radius:10px;border:1px solid #444;background:#222;color:#eee}
+.counter{font-size:12px;color:#bbb;padding:0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;padding:12px}
+.card{background:#2a2a2a;border:1px solid #333;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:0.2s}
+.card:hover{border-color:#ff3333}
+.thumb{width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;background:#191919;border-bottom:1px solid #333}
+.thumb img{max-width:85%;max-height:85%;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))}
+.body{padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.title{font:700 15px/1.2 system-ui;color:#ff3333}
+.desc{color:#ccc;font:400 13px/1.3 system-ui;min-height:2.6em}
+.price{font:800 14px/1 system-ui;color:#fff}
+.buy{margin-top:auto;display:inline-block;text-align:center;padding:8px 10px;border-radius:10px;background:#ff0000;color:#fff;text-decoration:none;font:700 14px system-ui;border:none}
+.buy:hover{filter:brightness(1.1)}
+.empty{padding:14px;color:#f55}
+
     `;
     this.shadowRoot.innerHTML = `<style>${this._style}</style>
       <div class="wrap">
