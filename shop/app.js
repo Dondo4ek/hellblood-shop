@@ -11,20 +11,16 @@ const CATEGORY_TITLES = {
 };
 const BLOCK_ORDER = ["kits","weapons","components","electric","quarries","uncategorized"];
 
-// In /shop/, assets live at site root. So: products.json -> ../products.json
 async function loadProducts(){
-  const res = await fetch('../products.json');
-  if(!res.ok) throw new Error('products.json not found at site root');
+  const res = await fetch('products.json');
+  if(!res.ok) throw new Error('products.json not found in /shop/');
   return await res.json();
 }
 
 function normalizeImagePath(path){
   if(!path) return '';
-  // If products.json uses 'img/...', from /shop/ we need '../img/...'
-  if(path.startsWith('img/')) return '../' + path;
-  // If it references kit-*.png in root, prefix '../'
-  if(!path.includes('/')) return '../' + path;
-  // If it already starts with '/' or contains a folder, leave as-is (relative from /shop/)
+  if(path.startsWith('img/')) return path; // local /shop/img/...
+  if(!path.includes('/')) return path;     // local kit-*.png
   return path;
 }
 
@@ -125,5 +121,5 @@ async function main(){
 
 main().catch(err=>{
   console.error(err);
-  el('.grid').innerHTML = '<div style="padding:20px;color:#f55">Ошибка: products.json не найден в корне. Залей файл на сайт (рядом с /img).</div>';
+  el('.grid').innerHTML = '<div style="padding:20px;color:#f55">Ошибка: products.json не найден в /shop/. Файлы должны быть внутри /shop/.</div>';
 });
