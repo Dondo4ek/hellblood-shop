@@ -4,7 +4,6 @@
     "title": "Набор Lord",
     "price": 5,
     "currency": "RUB",
-    "description": "Быстрый старт: томпсон, лёгкая броня, хил и базовые ресурсы.",
     "image": "kit-lord.png",
     "paymentLink": "#",
     "details": [
@@ -34,7 +33,6 @@
     "title": "Набор Daemon Prince",
     "price": 10,
     "currency": "RUB",
-    "description": "Сильный рейд-старт: АК + берданка, металл-броник, хил и немного взрыва.",
     "image": "kit-daemon-prince.png",
     "paymentLink": "#",
     "details": [
@@ -67,10 +65,9 @@
   },
   {
     "id": "kit_khorne",
-    "title": "Набор Khorne",
+    "title": "Набор Lucifer",
     "price": 20,
     "currency": "RUB",
-    "description": "Тяжёлый доминирующий набор: 2 АК, болтовка, фулл металл, хил, С4 и ракеты, турель.",
     "image": "kit-khorne.png",
     "paymentLink": "#",
     "details": [
