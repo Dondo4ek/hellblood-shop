@@ -139,10 +139,8 @@ connectedCallback(){
     const isKit = (p.category||'').toLowerCase()==='kits';
     const theming = isKit ? this._kitAccent(p.price??0, this._kitStats) : {accent:'#ff3333', tier:''};
     const accent = theming.accent;
-
     const price = `${p.price ?? ''} ${p.currency || ''}`.trim();
     const desc = (p.description || '').toString();
-    // Note: primary action is to open modal; buy link is available inside modal
     return `
     <div class="card" data-id="${p.id}" data-accent="${accent}" style="--hb-accent:${accent}">
       <div class="thumb" style="position:relative">
@@ -159,19 +157,8 @@ connectedCallback(){
         </div>
       </div>
     </div>`;
-    <div class="card" data-id="${p.id}">
-      <div class="thumb">${img ? `<img src="${img}" alt="${p.title||''}">` : ''}</div>
-      <div class="body">
-        <div class="title">${p.title||''}</div>
-        <div class="desc">${desc}</div>
-        <div class="price">${price}</div>
-        <div class="cta">
-          <a class="more" href="#" data-action="open">Подробнее</a>
-          <a class="buy" href="#" data-action="buy">КУПИТЬ</a>
-        </div>
-      </div>
-    </div>`;
   }
+
 
   _wire(){
     const tabs = this.shadowRoot.querySelector('.tabs');
