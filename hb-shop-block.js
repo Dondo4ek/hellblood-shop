@@ -61,15 +61,16 @@ class HBShopBlock extends HTMLElement{
     const q = (p)=> arr[Math.max(0, Math.min(arr.length-1, Math.round((arr.length-1)*p)))];
     return { min: arr[0], q1: q(0.33), q2: q(0.5), q3: q(0.66), max: arr[arr.length-1] };
   }
+  
   _kitAccent(price, stats){
-    // Bronze → Silver → Gold → Mythic within the blood palette
-    // Fallback to brand red if stats degenerate
-    if(!stats || stats.max===stats.min){ return {accent:'#ff3333', tier:'GOLD'}; }
-    if(price <= stats.q1) return {accent:'#c7c7c7', tier:'BRONZE'};     // steel
-    if(price <= stats.q2) return {accent:'#ff7f27', tier:'SILVER'};     // flame orange
-    if(price <= stats.q3) return {accent:'#ff3333', tier:'GOLD'};       // blood red
-    return {accent:'#b300ff', tier:'MYTHIC'};                           // royal purple
+    if(!stats || stats.max===stats.min){ 
+      return {accent:'#ff2400', tier:'HIGH'}; 
+    }
+    if(price <= stats.q1) return {accent:'#ffd700', tier:'LOW'};   // дешёвый (жёлтый)
+    if(price <= stats.q2) return {accent:'#8a2be2', tier:'MID'};   // средний (пурпур)
+    return {accent:'#ff2400', tier:'HIGH'};                        // дорогой (красный)
   }
+
 connectedCallback(){
     this._init();
   }
