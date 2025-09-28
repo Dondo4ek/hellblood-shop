@@ -22,7 +22,7 @@ class HBShopBlock extends HTMLElement{
       .counter{font-size:12px;color:#bbb;padding:0 10px}
       .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;padding:12px}
       .card{background:#2a2a2a;border:1px solid #333;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:0.2s;cursor:pointer}
-      .card:hover{border-color:#ff3333;transform:translateY(-1px)}
+      .card:hover{border-color:var(--hb-accent);transform:translateY(-1px)}
       .thumb{width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;background:#191919;border-bottom:1px solid #333}
       .thumb img{max-width:85%;max-height:85%;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))}
       .body{padding:10px 12px;display:flex;flex-direction:column;gap:6px}
@@ -52,7 +52,25 @@ class HBShopBlock extends HTMLElement{
       </div>`;
   }
 
-  connectedCallback(){
+  
+  // === Price-based theming for kits ===
+  _computeKitPriceStats(){
+    const kits = this._data.filter(p => (p.category||'').toLowerCase()==='kits' && typeof p.price === 'number');
+    if(!kits.length) return {min:0, q1:0, q2:0, q3:0, max:0};
+    const arr = kits.map(k=>k.price).sort((a,b)=>a-b);
+    const q = (p)=> arr[Math.max(0, Math.min(arr.length-1, Math.round((arr.length-1)*p)))];
+    return { min: arr[0], q1: q(0.33), q2: q(0.5), q3: q(0.66), max: arr[arr.length-1] };
+  }
+  _kitAccent(price, stats){
+    // Bronze → Silver → Gold → Mythic within the blood palette
+    // Fallback to brand red if stats degenerate
+    if(!stats || stats.max===stats.min){ return {accent:'#ff3333', tier:'GOLD'}; }
+    if(price <= stats.q1) return {accent:'#c7c7c7', tier:'BRONZE'};     // steel
+    if(price <= stats.q2) return {accent:'#ff7f27', tier:'SILVER'};     // flame orange
+    if(price <= stats.q3) return {accent:'#ff3333', tier:'GOLD'};       // blood red
+    return {accent:'#b300ff', tier:'MYTHIC'};                           // royal purple
+  }
+connectedCallback(){
     this._init();
   }
 
@@ -81,6 +99,9 @@ class HBShopBlock extends HTMLElement{
 
       this._renderTabs();
       this._wire();
+
+      // compute price stats for kit theming
+      this._kitStats = this._computeKitPriceStats();
 
       const prefer = this.getAttribute('default') || 'kits';
       const key = this._byCat[prefer]?.length ? prefer : 'all';
@@ -115,10 +136,29 @@ class HBShopBlock extends HTMLElement{
 
   _cardHTML(p){
     const img = this._normalizeImg(p.image);
+    const isKit = (p.category||'').toLowerCase()==='kits';
+    const theming = isKit ? this._kitAccent(p.price??0, this._kitStats) : {accent:'#ff3333', tier:''};
+    const accent = theming.accent;
+
     const price = `${p.price ?? ''} ${p.currency || ''}`.trim();
     const desc = (p.description || '').toString();
     // Note: primary action is to open modal; buy link is available inside modal
     return `
+    <div class="card" data-id="${p.id}" data-accent="${accent}" style="--hb-accent:${accent}">
+      <div class="thumb" style="position:relative">
+        <div style="position:absolute;left:0;top:0;right:0;height:4px;background:var(--hb-accent)"></div>
+        ${img ? `<img src="${img}" alt="${p.title||''}">` : ''}
+      </div>
+      <div class="body">
+        <div class="title" style="color:var(--hb-accent)">${p.title||''}</div>
+        <div class="desc">${desc}</div>
+        <div class="price" style="color:#fff"><span style="color:var(--hb-accent)">${price}</span></div>
+        <div class="cta">
+          <a class="more" href="#" data-action="open">Подробнее</a>
+          <a class="buy" href="#" data-action="buy" style="background:var(--hb-accent)">КУПИТЬ</a>
+        </div>
+      </div>
+    </div>`;
     <div class="card" data-id="${p.id}">
       <div class="thumb">${img ? `<img src="${img}" alt="${p.title||''}">` : ''}</div>
       <div class="body">
@@ -214,6 +254,11 @@ class HBShopBlock extends HTMLElement{
     const priceEl = modal.querySelector('#modal-price');
     const buyEl = modal.querySelector('#modal-buy');
 
+    // Determine accent based on kit price
+    const isKit = (item.category||'').toLowerCase()==='kits';
+    const theme = isKit ? this._kitAccent(item.price??0, this._kitStats) : {accent:'#ff3333', tier:''};
+    const accent = theme.accent;
+
     if(imgEl){ imgEl.src = item.image || ''; imgEl.alt = item.title || ''; }
 
     // Build description + privileges
@@ -225,20 +270,23 @@ class HBShopBlock extends HTMLElement{
       html += `<p style="margin:8px 0 12px 0; line-height:1.5; color:#ddd">${item.description}</p>`;
     }
 
+    
     // --- Composition / Состав ---
     const detailsList = Array.isArray(item.details) ? item.details : [];
     if(detailsList.length){
-      html += `<div style="margin:10px 0 14px 0">
+      html += `<div style="margin:12px 0 16px 0; background:#171717; border:1px solid #242424; border-radius:12px; padding:12px">
         <h4 style="margin:0 0 8px 0; font-weight:800; color:#ff3333">Состав</h4>
-        <ul style="margin:0; padding-left:18px; line-height:1.5; color:#eee">
-          ${detailsList.map(d=>`<li style="margin:3px 0">${d}</li>`).join('')}
+        <ul style="margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:8px">
+          ${detailsList.map(d=>`<li style="margin:0; padding:8px 10px; background:#202020; border:1px solid #2a2a2a; border-radius:10px; line-height:1.45; color:#eee">${d}</li>`).join('')}
         </ul>
       </div>`;
     }
 
-    // --- Privileges / Привилегии (below composition) ---
+    // --- Privileges / Привилегии (styled, below composition) ---
+    // Build perks list first (same logic as before)
     const perksList = [];
-    if((item.category||'').toLowerCase()==='kits'){
+    const isKitForPerks = (item.category||'').toLowerCase()==='kits';
+    if(isKitForPerks){
       if(typeof item.sethome_count === 'number') perksList.push(`Количество SetHome: <b>${item.sethome_count}</b>`);
       if(typeof item.tp_cooldown_sec === 'number') perksList.push(`КД телепорта: <b>${item.tp_cooldown_sec} сек</b>`);
       if(typeof item.tp_time_sec === 'number') perksList.push(`Время телепорта: <b>${item.tp_time_sec} сек</b>`);
@@ -253,11 +301,21 @@ class HBShopBlock extends HTMLElement{
     if(Array.isArray(item.privileges)){
       for(const p of item.privileges){ perksList.push(p); }
     }
+
     if(perksList.length){
-      html += `<div style="margin:10px 0 0 0">
-        <h4 style="margin:0 0 8px 0; font-weight:800; color:#ff3333">Привилегии</h4>
-        <ul style="margin:0; padding-left:18px; line-height:1.5; color:#eee">
-          ${perksList.map(d=>`<li style="margin:3px 0">${d}</li>`).join('')}
+      // Determine accent from price tier (same as card/modal theming)
+      const isKit = (item.category||'').toLowerCase()==='kits';
+      const theme = isKit ? this._kitAccent(item.price??0, this._kitStats) : {accent:'#ff3333', tier:''};
+      const accent = theme.accent;
+
+      html += `<div style="margin:12px 0 0 0; background:#171717; border:1px solid #242424; border-radius:12px; padding:12px">
+        <h4 style="margin:0 0 8px 0; font-weight:800; color:${accent}">Привилегии</h4>
+        <ul style="margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:8px">
+          ${perksList.map(txt=>`
+            <li style="margin:0; display:flex; align-items:flex-start; gap:10px; padding:10px 12px; background:#202020; border:1px solid #2a2a2a; border-radius:10px; line-height:1.45; color:#eee">
+              <span style="flex:0 0 10px; height:10px; margin-top:5px; border-radius:50%; background:${accent}; box-shadow:0 0 0 3px rgba(255,255,255,0.04)"></span>
+              <span style="display:block">${txt}</span>
+            </li>`).join('')}
         </ul>
       </div>`;
     }
@@ -265,9 +323,10 @@ class HBShopBlock extends HTMLElement{
     if(!item.description && !detailsList.length && !perksList.length){
       html = '<p>Описание отсутствует</p>';
     }
-if(descEl){ descEl.innerHTML = html || '<p>Описание отсутствует</p>'; }
 
-    if(priceEl){ priceEl.textContent = `${item.price ?? ''} ${item.currency || ''}`.trim(); }
+    if(descEl){ descEl.innerHTML = html || '<p>Описание отсутствует</p>'; }
+
+    if(priceEl){ priceEl.textContent = `${item.price ?? ''} ${item.currency || ''}`.trim(); priceEl.style.color = accent; }
     if(buyEl){ buyEl.href = item.paymentLink || '#'; buyEl.target = item.paymentLink ? '_blank' : '_self'; }
 
     // ---- Center modal without touching global CSS
@@ -295,7 +354,11 @@ if(descEl){ descEl.innerHTML = html || '<p>Описание отсутствуе
         border: '1px solid #2a2a2a',
         boxShadow: '0 12px 40px rgba(0,0,0,.6)'
       });
-      // Tweak inner image if present
+      const h4s = modal.querySelectorAll('h4');
+      h4s.forEach(h=> h.style.color = accent);
+      if(buyEl){ buyEl.style.background = accent; buyEl.style.border = 'none'; }
+      const titleEl = modal.querySelector('.modal-title, #modal-title');
+      if(titleEl){ titleEl.style.color = accent; }
       const img = modal.querySelector('#modal-image');
       if(img){
         img.style.display = 'block';
