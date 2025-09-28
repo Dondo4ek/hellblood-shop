@@ -88,7 +88,7 @@
     "tp_cooldown_sec": 60,
     "tp_time_sec": 5,
     "chat_prefix": {
-      "text": "[KHORNE]",
+      "text": "[LUCIFER]",
       "color": "#ff2a2a"
     },
     "backpack_slots": 24,
@@ -96,7 +96,7 @@
     "recycler_multiplier": 2.0,
     "repair_discount_percent": 40,
     "gather_bonus_percent": 15,
-    "daily_kit_name": "khorne-daily",
+    "daily_kit_name": "lucifer-daily",
     "category": "kits"
   },
   {
