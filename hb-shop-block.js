@@ -56,13 +56,7 @@ class HBShopBlock extends HTMLElement{
   // === Price-based theming for kits ===
   _computeKitPriceStats(){
     const kits = this._data.filter(p => (p.category||'').toLowerCase()==='kits' && typeof p.price === 'number');
-    if(!kits.length) return {min:0, q1:0, q2:0, q3:0, max:0};
-    const arr = kits.map(k=>k.price).sort((a,b)=>a-b);
-    const q = (p)=> arr[Math.max(0, Math.min(arr.length-1, Math.round((arr.length-1)*p)))];
-    return { min: arr[0], q1: q(0.33), q2: q(0.5), q3: q(0.66), max: arr[arr.length-1] };
-  }
-  
-  
+    if(!kits.length) return {min:0, q1:0, q2:0, q3:0, max:0}
   _kitAccent(price, stats){
     if(!stats || stats.max===stats.min){ 
       return {accent:'#ff003c', tier:'HIGH'}; 
@@ -71,12 +65,11 @@ class HBShopBlock extends HTMLElement{
     if(price <= stats.q2) return {accent:'#bf00ff', tier:'MID'};   // средний (ультрафиолет)
     return {accent:'#ff003c', tier:'HIGH'};                        // дорогой (кровавый неон)
   }
-
-    if(price <= stats.q1) return {accent:'#ffd700', tier:'LOW'};   // дешёвый (жёлтый)
-    if(price <= stats.q2) return {accent:'#8a2be2', tier:'MID'};   // средний (пурпур)
-    return {accent:'#ff2400', tier:'HIGH'};                        // дорогой (красный)
+;
+    const arr = kits.map(k=>k.price).sort((a,b)=>a-b);
+    const q = (p)=> arr[Math.max(0, Math.min(arr.length-1, Math.round((arr.length-1)*p)))];
+    return { min: arr[0], q1: q(0.33), q2: q(0.5), q3: q(0.66), max: arr[arr.length-1] };
   }
-
 connectedCallback(){
     this._init();
   }
