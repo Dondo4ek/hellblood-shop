@@ -62,10 +62,16 @@ class HBShopBlock extends HTMLElement{
     return { min: arr[0], q1: q(0.33), q2: q(0.5), q3: q(0.66), max: arr[arr.length-1] };
   }
   
+  
   _kitAccent(price, stats){
     if(!stats || stats.max===stats.min){ 
-      return {accent:'#ff2400', tier:'HIGH'}; 
+      return {accent:'#ff003c', tier:'HIGH'}; 
     }
+    if(price <= stats.q1) return {accent:'#39ff14', tier:'LOW'};   // дешёвый (кислотно-зелёный)
+    if(price <= stats.q2) return {accent:'#bf00ff', tier:'MID'};   // средний (ультрафиолет)
+    return {accent:'#ff003c', tier:'HIGH'};                        // дорогой (кровавый неон)
+  }
+
     if(price <= stats.q1) return {accent:'#ffd700', tier:'LOW'};   // дешёвый (жёлтый)
     if(price <= stats.q2) return {accent:'#8a2be2', tier:'MID'};   // средний (пурпур)
     return {accent:'#ff2400', tier:'HIGH'};                        // дорогой (красный)
