@@ -10,6 +10,18 @@ class HBShopBlock extends HTMLElement{
     this._modalId = this.getAttribute('modal') || 'product-modal';
 
     // === Styles (high-contrast) ===
+    
+    // --- Price tier helpers for kits ---
+    _getTier(p){
+      const cat=(p.category||'').toLowerCase(); const isKit = cat==='kits' || (typeof p.id==='string' && p.id.startsWith('kit_')) || /\bНабор\b/i.test(p.title||''); if(!isKit) return null;
+      const price = Number(p.price||0);
+      if(price >= 20) return 'premium';
+      if(price >= 10) return 'standard';
+      return 'budget';
+    }
+    _tierLabel(t){
+      return t==='premium' ? 'ПРЕМИУМ' : (t==='standard' ? 'СТАНДАРТ' : (t==='budget' ? 'БЮДЖЕТ' : ''));
+    }
     this._style = `
       *{box-sizing:border-box} :host{display:block}
       .wrap{background:#1a1a1a;color:#e6e6e6;border:1px solid #333;border-radius:14px;overflow:hidden}
@@ -33,7 +45,26 @@ class HBShopBlock extends HTMLElement{
       .more{flex:1;display:inline-block;text-align:center;padding:8px 10px;border-radius:10px;background:#2d2d2d;color:#eee;text-decoration:none;border:1px solid #444}
       .buy{flex:1;display:inline-block;text-align:center;padding:8px 10px;border-radius:10px;background:#ff0000;color:#fff;text-decoration:none;font:700 14px system-ui;border:none}
       .empty{padding:14px;color:#f55}
-    `;
+
+      /* === Tier visuals for kit cards === */
+      .card{position:relative}
+      .card.tier-premium{border-color:#6a1a1a; box-shadow:0 10px 24px rgba(255,30,30,.12), inset 0 0 0 1px rgba(255,80,80,.08)}
+      .card.tier-standard{border-color:#2f3a4a; box-shadow:0 10px 24px rgba(120,160,255,.08), inset 0 0 0 1px rgba(120,160,255,.06)}
+      .card.tier-budget{border-color:#2a3f2a; box-shadow:0 10px 24px rgba(120,255,140,.06), inset 0 0 0 1px rgba(120,255,140,.05)}
+      .card.tier-premium .title{color:#ff3333}
+      .card.tier-standard .title{color:#8fb3ff}
+      .card.tier-budget .title{color:#78ff98}
+      .tier-badge{
+        position:absolute; top:8px; left:8px;
+        font:800 10px/1 system-ui; letter-spacing:.8px;
+        padding:6px 8px; border-radius:10px;
+        border:1px solid rgba(255,255,255,.12); backdrop-filter:blur(4px);
+        background:rgba(0,0,0,.35); color:#eee; text-shadow:0 1px 0 rgba(0,0,0,.6);
+      }
+      .card.tier-premium .tier-badge{border-color:#7a2a2a; background:linear-gradient(180deg,rgba(70,0,0,.6),rgba(20,0,0,.5))}
+      .card.tier-standard .tier-badge{border-color:#2a3a7a; background:linear-gradient(180deg,rgba(0,20,60,.5),rgba(0,10,30,.45))}
+      .card.tier-budget .tier-badge{border-color:#2a7a3a; background:linear-gradient(180deg,rgba(0,60,20,.45),rgba(0,40,10,.4))}
+        `;
 
     this.shadowRoot.innerHTML = `<style>${this._style}</style>
       <div class="wrap">
@@ -119,8 +150,8 @@ class HBShopBlock extends HTMLElement{
     const desc = (p.description || '').toString();
     // Note: primary action is to open modal; buy link is available inside modal
     return `
-    <div class="card" data-id="${p.id}">
-      <div class="thumb">${img ? `<img src="${img}" alt="${p.title||''}">` : ''}</div>
+    <div class="card ${((()=>{const t=this._getTier(p); return t?('tier-'+t):''})())}" data-id="${p.id}">
+      <div class="thumb">${(()=>{const t=this._getTier(p);return t?`<span class=\"tier-badge\">${this._tierLabel(t)}`:""})()}</span>${img ? `<img src="${img}" alt="${p.title||''}">` : ''}</div>
       <div class="body">
         <div class="title">${p.title||''}</div>
         <div class="desc">${desc}</div>
@@ -254,12 +285,7 @@ class HBShopBlock extends HTMLElement{
       for(const p of item.privileges){ perksList.push(p); }
     }
     if(perksList.length){
-      html += `<div style="margin:10px 0 0 0">
-        <h4 style="margin:0 0 8px 0; font-weight:800; color:#ff3333">Привилегии</h4>
-        <ul style="margin:0; padding-left:18px; line-height:1.5; color:#eee">
-          ${perksList.map(d=>`<li style="margin:3px 0">${d}</li>`).join('')}
-        </ul>
-      </div>`;
+      html += `<div class="perks-box"><div class="perks-head">ПРИВИЛЕГИИ</div><ul class="perks-list">${perksList.map(d=>`<li>${d}</li>`).join('')}</ul></div>`;
     }
 
     if(!item.description && !detailsList.length && !perksList.length){
